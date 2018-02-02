@@ -63,6 +63,7 @@ public class PetShelter {
 			System.out.print("|"+entry.getValue().getThirst() + "\t");
 			System.out.println("|"+entry.getValue().getBoredom() + "\t");
 		}
+		System.out.println("--------|-------|-------|-------");
 	}
 
 	public Set<String> listNames() {
@@ -72,6 +73,16 @@ public class PetShelter {
 
 	public boolean checkForPet(String name) {
 		return petShelter.containsKey(name);
+	}
+
+	public void cleanHabitats() {
+		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
+			entry.getValue().cleanUp();;
+		}
+	}
+
+	public void giveTreatTo(String response) {
+		petShelter.get(response).giveTreat();
 	}
 
 }

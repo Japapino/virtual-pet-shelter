@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Map.Entry;
 
 public class virtualPetShelterApp {
 	public static void main(String[] args) {
@@ -18,7 +17,7 @@ public class virtualPetShelterApp {
 		
 		while (!response.equals("quit")){
 			System.out.println("What would you like to do?");
-		System.out.println("1. Feed pets \n2.Water pets \n3. Play with a pet \n4. Adopt a pet \n5. Admit pet \n6.Quit");
+		System.out.println("1. Feed pets \n2.Water pets \n3. Play with a pet \n4. Adopt a pet \n5. Admit pet 6. Clean habitats \nSay\"Quit\" to quit.");
 		response = input.nextLine(); 
 			
 		if (response.equals("1")){
@@ -46,7 +45,6 @@ public class virtualPetShelterApp {
 			response = input.nextLine(); 
 			myShelter.adopt(response); 
 			System.out.println("Thank you for adopting: "+ response +", we hope enjoy your new friend.");
-			
 		}
 		
 		if(response.equals("5")) {
@@ -64,12 +62,25 @@ public class virtualPetShelterApp {
 			
 			VirtualPet temp = new VirtualPet(name, description, hunger, thirst, health); 
 			myShelter.addPet(temp);
+			input.nextLine(); 
+		}
+		
+		if(response.equals("6")) {
+			myShelter.cleanHabitats(); 
+		}
+		
+		if(response.equals("7")) {
+			System.out.println("Which pet would you like to give a treat to?");
+			myShelter.giveTreatTo(response);
+			System.out.println("You gave " +response+ " a hotdog.");
+			
 		}
 		
 		myShelter.tickIncreaseAll();
 		myShelter.listStatsAll();
 		}
-
+		System.out.println("Thanks for visiting!");
+		System.exit(0);
 	}
 
 }
