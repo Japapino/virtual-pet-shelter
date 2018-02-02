@@ -31,8 +31,23 @@ public class PetShelter {
 		for(Entry<String, VirtualPet> entry: petShelter.entrySet()) {
 			entry.getValue().giveFood();
 		}
-
+	}
+	
+	public void wateringTime() {
+		for(Entry<String, VirtualPet> entry: petShelter.entrySet()) {
+			entry.getValue().giveWater();
+		}
+	}
+	
+	public void playWith(String name) {
+		petShelter.get(name).play();
 		
+	}
+
+	public void tickIncreaseAll() {
+		for(Entry<String, VirtualPet> entry: petShelter.entrySet()) {
+			entry.getValue().tickIncrease();
+		}
 	}
 
 }

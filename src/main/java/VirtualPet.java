@@ -14,6 +14,7 @@ public class VirtualPet {
 		this.name = nameInput;
 		this.description = description; 
 	}
+	
 
 	// methods
 	public String name() {
@@ -81,7 +82,7 @@ public class VirtualPet {
 
 	public void cleanUp() {
 		waste = 0;
-		boredom += 10;
+		boredom += 20;
 
 	}
 

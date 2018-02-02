@@ -13,7 +13,7 @@ public class virtualPetApp {
 				+ "  (           )\r\n" + " ( (  )   (  ) )\r\n" + "(__(__)___(__)__)");
 		System.out.println("What is his name?");
 		userResponse = input.nextLine();
-		pet.setName(userResponse);
+		//pet.setName(userResponse);
 		System.out.println(pet.getName() + "'s stats are: ");
 		System.out.println(pet.getStats());
 

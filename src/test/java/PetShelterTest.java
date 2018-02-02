@@ -78,17 +78,40 @@ public class PetShelterTest {
 	public void hungerShouldReduceForBoth() {
 		String anotherPetName = "TEST2";
 		VirtualPet anotherPet = new VirtualPet(anotherPetName, petName); 
-		pet.play();
-		pet.play();
-		anotherPet.play();
-		anotherPet.play();
 		underTest.addPet(pet);
 		underTest.addPet(anotherPet);
+		pet.play();
+		pet.play();
+		anotherPet.play();
+		anotherPet.play();
 		underTest.feedAll();
 		int check = pet.getHunger();
 		int check1 = anotherPet.getHunger();
 		assertEquals(10, check);
 		assertEquals(10, check1);
+	}
+	
+	@Test
+	public void boredomShouldGoDown() {
+		pet.cleanUp();
+		pet.play();
+		int check = pet.getBoredom();
+		assertEquals(10, check);
+	}
+	
+	@Test
+	public void statsShouldChangeOverTimeForAllPets() {
+		String anotherPetName = "TEST2";
+		VirtualPet anotherPet = new VirtualPet(anotherPetName, petName); 
+		underTest.addPet(pet);
+		underTest.addPet(anotherPet);
+		underTest.tickIncreaseAll();
+		int check = pet.checkWaste();
+		int check1 = anotherPet.checkWaste();
+		assertEquals(3,check);
+		assertEquals(3,check1);
 		
 	}
+	
+
 }
