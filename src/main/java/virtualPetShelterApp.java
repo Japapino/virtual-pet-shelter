@@ -17,7 +17,7 @@ public class virtualPetShelterApp {
 		
 		while (!response.equals("quit")){
 			System.out.println("What would you like to do?");
-		System.out.println("1. Feed pets \n2.Water pets \n3. Play with a pet \n4. Adopt a pet \n5. Admit pet 6. Clean habitats \nSay\"Quit\" to quit.");
+		System.out.println("1. Feed pets \n2. Water pets \n3. Play with a pet \n4. Adopt a pet \n5. Admit pet 6. Clean habitats \nSay\"Quit\" to quit.");
 		response = input.nextLine(); 
 			
 		if (response.equals("1")){
