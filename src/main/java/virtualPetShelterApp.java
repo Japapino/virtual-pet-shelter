@@ -1,4 +1,71 @@
+import java.util.Scanner;
+import java.util.Map.Entry;
 
 public class virtualPetShelterApp {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		String response ="";
+		PetShelter myShelter = new PetShelter();
+		VirtualPet pet1 = new VirtualPet("Socks", "Cat"); 
+		VirtualPet pet2 = new VirtualPet("Crazy", "Dog"); 
+		VirtualPet pet3 = new VirtualPet("Cloud", "Fat cat", 10,5,2);
+		myShelter.addPet(pet1);
+		myShelter.addPet(pet2);
+		myShelter.addPet(pet3);
+		
+		System.out.println("Welcome to Doug's adoption shelter! \nHere is the status of the pets:");
+		myShelter.listStatsAll();
+		
+		while (!response.equals("quit")){
+			System.out.println("What would you like to do?");
+		System.out.println("1. Feed pets \n2.Water pets \n3. Play with a pet \n4. Adopt a pet \n5. Admit pet \n6.Quit");
+		response = input.nextLine(); 
+			
+		if (response.equals("1")){
+			myShelter.feedAll();
+		}
+		
+		if(response.equals("2")) {
+			myShelter.waterAll();
+		}
+		
+		if(response.equals("3")) {
+			System.out.println("Which pet would you like to play with?");
+			System.out.println(myShelter.listNames());
+			response = input.nextLine(); 
+			if(myShelter.checkForPet(response)) {
+				myShelter.playWith(response);
+			} else {
+				System.out.println("Pet not found");
+			}
+		}
+		
+		if(response.equals("4")) {
+			System.out.println("Oh boy! Which would you like?");
+			myShelter.listNames();
+			response = input.nextLine(); 
+			myShelter.adopt(response); 
+			System.out.println("Thank you for adopting: "+ response +", we hope enjoy your new friend.");
+			
+		}
+		
+		if(response.equals("5")) {
+			System.out.println("We need some info before we can admit them please answer some questions.");
+			System.out.println("What is their name?");
+			
+			System.out.println("How would you describe them.");
+			
+			System.out.println("On a scale of 1-10, how hungry do they seem?");
+			
+			System.out.println("on a scale of 1-10, how thirsty do they seem?");
+		
+			System.out.println("On a scale of 1-10 how healthy do they seem?");
+		}
+		
+		myShelter.tickIncreaseAll();
+		myShelter.listStatsAll();
+		}
+
+	}
 
 }

@@ -1,26 +1,40 @@
 
 public class VirtualPet {
 	// default stats
-	private int health = 100;
-	private int hunger = 0;
-	private int boredom = 0;
-	private int thirst = 0;
-	private int waste = 0;
+	private int health;
+	private int hunger;
+	private int boredom;
+	private int thirst;
+	private int waste;
 	String name;
 	String description;
 
 	// constructor
 	public VirtualPet(String nameInput, String description) {
 		this.name = nameInput;
-		this.description = description; 
+		this.description = description;
+		health = 100;
+		hunger = 1;
+		boredom = 1;
+		thirst = 1;
+		waste = 2;
 	}
-	
+
+	public VirtualPet(String name, String description, int hunger, int thirst, int health) {
+		this.name = name;
+		this.description = description;
+		this.health = health;
+		this.hunger = hunger;
+		this.boredom = 0;
+		this.thirst = thirst;
+		waste = 0;
+	}
 
 	// methods
 	public String name() {
 		return name;
 	}
-	
+
 	public void checkStats() {
 		if (this.health > 100) {
 			this.health = 100;
