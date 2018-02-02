@@ -33,5 +33,62 @@ public class PetShelterTest {
 		VirtualPet retrieved = underTest.findPet(petName);
 		assertThat(retrieved, is(pet));
 	}
-
+	
+	@Test
+	public void shouldBeAbletoAddMultiplePets() {
+		//arrange
+		String anotherPetName = "TEST2";
+		VirtualPet anotherPet = new VirtualPet(anotherPetName, petName); 
+		
+		//act
+		underTest.addPet(pet);
+		underTest.addPet(anotherPet);
+		
+		//assert
+		Collection<VirtualPet> pets = underTest.allPets();
+		
+		//using matchers
+		assertThat(pets, containsInAnyOrder(pet, anotherPet));
+	
+		//using assertEquals/True
+		assertTrue(pets.contains(pet));
+		assertTrue(pets.contains(anotherPet));
+		assertEquals(2, pets.size()); 		
+		
+	}
+	
+	@Test 
+	public void shouldRemoveAPet() {
+		underTest.addPet(pet);
+		underTest.adopt(petName);
+		
+		VirtualPet found = underTest.findPet(petName);
+		assertThat(found, is(nullValue()));
+	}
+	
+	@Test
+	public void hungerShouldReduce() {
+		pet.play();
+		pet.play();
+		pet.giveFood();
+		int check = pet.getHunger();
+		assertEquals(10, check);
+	}
+	@Test
+	public void hungerShouldReduceForBoth() {
+		String anotherPetName = "TEST2";
+		VirtualPet anotherPet = new VirtualPet(anotherPetName, petName); 
+		pet.play();
+		pet.play();
+		anotherPet.play();
+		anotherPet.play();
+		underTest.addPet(pet);
+		underTest.addPet(anotherPet);
+		underTest.feedAll();
+		int check = pet.getHunger();
+		int check1 = anotherPet.getHunger();
+		assertEquals(10, check);
+		assertEquals(10, check1);
+		
+	}
 }
