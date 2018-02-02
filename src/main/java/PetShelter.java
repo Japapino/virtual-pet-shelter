@@ -52,19 +52,26 @@ public class PetShelter {
 	}
 
 	public void listStatsAll() {
-		System.out.println("Name    |Hunger  |Thirst  |Boredom ");
-		System.out.println("--------|--------|--------|--------");
-		for(Entry<String, VirtualPet> entry: petShelter.entrySet()) {
-			System.out.print(entry.getValue().getName()+"   |");
-			System.out.print(entry.getValue().getHunger()+"       |");
-			System.out.print(entry.getValue().getThirst()+"       |");
-			System.out.println(entry.getValue().getBoredom()+"       |");
+		System.out.print("Name\t");
+		System.out.print("|Hunger\t");
+		System.out.print("|Thirst\t");
+		System.out.println("|Boredom\t");
+		System.out.println("--------|-------|-------|-------");
+		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
+			System.out.print(entry.getValue().getName() + "\t");
+			System.out.print("|"+entry.getValue().getHunger() + "\t");
+			System.out.print("|"+entry.getValue().getThirst() + "\t");
+			System.out.println("|"+entry.getValue().getBoredom() + "\t");
 		}
 	}
-	
+
 	public Set<String> listNames() {
-		Set<String> petsNames = petShelter.keySet(); 
+		Set<String> petsNames = petShelter.keySet();
 		return petsNames;
+	}
+
+	public boolean checkForPet(String name) {
+		return petShelter.containsKey(name);
 	}
 
 }

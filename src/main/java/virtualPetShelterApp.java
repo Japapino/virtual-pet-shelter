@@ -52,14 +52,18 @@ public class virtualPetShelterApp {
 		if(response.equals("5")) {
 			System.out.println("We need some info before we can admit them please answer some questions.");
 			System.out.println("What is their name?");
-			
+			String name = input.nextLine();
 			System.out.println("How would you describe them.");
-			
+			String description = input.nextLine();
 			System.out.println("On a scale of 1-10, how hungry do they seem?");
-			
+			int hunger = input.nextInt(); 
 			System.out.println("on a scale of 1-10, how thirsty do they seem?");
-		
+			int thirst = input.nextInt(); 
 			System.out.println("On a scale of 1-10 how healthy do they seem?");
+			int health = input.nextInt();
+			
+			VirtualPet temp = new VirtualPet(name, description, hunger, thirst, health); 
+			myShelter.addPet(temp);
 		}
 		
 		myShelter.tickIncreaseAll();
