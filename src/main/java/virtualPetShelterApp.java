@@ -89,7 +89,9 @@ public class virtualPetShelterApp {
 			myShelter.listStatsAll();
 		}
 		System.out.println("Thanks for visiting!");
+		input.close();
 		System.exit(0);
+		
 	}
 
 }

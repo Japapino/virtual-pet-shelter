@@ -141,10 +141,11 @@ public class PetShelterTest {
 		underTest.feedAll();
 		underTest.feedAll();
 		underTest.feedAll();
-		boolean check1 = underTest.cleanliness().contains("TEST");
-		//boolean check2 = underTest.cleanliness().contains("TEST2");
+		underTest.feedAll(); 
+		boolean check = underTest.cleanliness().contains("TEST");
+		boolean check1 = underTest.cleanliness().contains("TEST2");
+		assertEquals(true, check);
 		assertEquals(true, check1);
-		//assertEquals(true, check2);
 
 	}
 

@@ -6,43 +6,43 @@ import java.util.HashMap;
 
 public class PetShelter {
 
-	private Map<String, VirtualPet> petShelter = new HashMap<String, VirtualPet>();
+	private Map<String, VirtualPet> inhabitants = new HashMap<String, VirtualPet>();
 
 	public void addPet(VirtualPet pet) {
-		petShelter.put(pet.name, pet);
+		inhabitants.put(pet.name, pet);
 	}
 
 	public VirtualPet findPet(String name) {
-		return petShelter.get(name);
+		return inhabitants.get(name);
 	}
 
 	public Collection<VirtualPet> allPets() {
-		return petShelter.values();
+		return inhabitants.values();
 	}
 
 	public void adopt(String petName) {
-		petShelter.remove(petName);
+		inhabitants.remove(petName);
 	}
 
 	public void feedAll() {
-		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
+		for (Entry<String, VirtualPet> entry : inhabitants.entrySet()) {
 			entry.getValue().giveFood();
 		}
 	}
 
 	public void waterAll() {
-		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
+		for (Entry<String, VirtualPet> entry : inhabitants.entrySet()) {
 			entry.getValue().giveWater();
 		}
 	}
 
 	public void playWith(String name) {
-		petShelter.get(name).play();
+		inhabitants.get(name).play();
 
 	}
 
 	public void tickIncreaseAll() {
-		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
+		for (Entry<String, VirtualPet> entry : inhabitants.entrySet()) {
 			entry.getValue().tickIncrease();
 		}
 	}
@@ -54,7 +54,7 @@ public class PetShelter {
 		System.out.print("|Boredom");
 		System.out.println("|Waste\t");
 		System.out.println("--------|-------|-------|-------|-------");
-		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
+		for (Entry<String, VirtualPet> entry : inhabitants.entrySet()) {
 			System.out.print(entry.getValue().getName() + "\t");
 			System.out.print("|" + entry.getValue().getHunger() + "\t");
 			System.out.print("|" + entry.getValue().getThirst() + "\t");
@@ -65,33 +65,33 @@ public class PetShelter {
 	}
 
 	public Set<String> listNames() {
-		Set<String> petsNames = petShelter.keySet();
+		Set<String> petsNames = inhabitants.keySet();
 		return petsNames;
 	}
 
 	public boolean checkForPet(String name) {
-		return petShelter.containsKey(name);
+		return inhabitants.containsKey(name);
 	}
 
 	public void cleanHabitats() {
-		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
+		for (Entry<String, VirtualPet> entry : inhabitants.entrySet()) {
 			entry.getValue().cleanUp();
 			;
 		}
 	}
 
 	public void giveTreatTo(String response) {
-		petShelter.get(response).giveTreat();
+		inhabitants.get(response).giveTreat();
 	}
 
 	public String cleanliness() {
 		String needsCleaning = "";
-		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
-			if (entry.getValue().poopCheck() >= 1) {
-				needsCleaning.concat(entry.getKey());
+		for(VirtualPet pet: inhabitants.values()) {
+			if (pet.poopCheck() >= 1) {
+				needsCleaning += pet.getName();
 			}
-
 		}
+		
 		return needsCleaning;
 	}
 

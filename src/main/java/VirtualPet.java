@@ -20,6 +20,7 @@ public class VirtualPet {
 		thirst = 0;
 		waste = 0;
 	}
+
 	// constructor to set default values
 	public VirtualPet(String name, String description, int hunger, int thirst, int health) {
 		this.name = name;
@@ -98,6 +99,7 @@ public class VirtualPet {
 	public void cleanUp() {
 		waste = 0;
 		boredom += 20;
+		poops = 0;
 
 	}
 
@@ -128,8 +130,8 @@ public class VirtualPet {
 
 	public int poopCheck() {
 
-		if (this.waste >=10) {
-			poops+=(waste/10);
+		if (this.waste >= 10) {
+			poops += (waste / 10);
 		}
 		return poops;
 	}
