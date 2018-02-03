@@ -140,8 +140,6 @@ public class PetShelterTest {
 		underTest.addPet(anotherPet);
 		underTest.feedAll();
 		underTest.feedAll();
-		underTest.feedAll();
-		underTest.feedAll(); 
 		boolean check = underTest.cleanliness().contains("TEST");
 		boolean check1 = underTest.cleanliness().contains("TEST2");
 		assertEquals(true, check);
