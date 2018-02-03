@@ -87,11 +87,15 @@ public class virtualPetShelterApp {
 
 			myShelter.tickIncreaseAll();
 			myShelter.listStatsAll();
+			if (!myShelter.cleanliness().isEmpty()) {
+				System.out.println("The following habitats need cleaning: " + myShelter.cleanliness());
+			}
+
 		}
 		System.out.println("Thanks for visiting!");
 		input.close();
 		System.exit(0);
-		
+
 	}
 
 }

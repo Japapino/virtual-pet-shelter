@@ -88,7 +88,7 @@ public class PetShelter {
 		String needsCleaning = "";
 		for(VirtualPet pet: inhabitants.values()) {
 			if (pet.poopCheck() >= 1) {
-				needsCleaning += pet.getName();
+				needsCleaning += pet.getName() + " ";
 			}
 		}
 		
