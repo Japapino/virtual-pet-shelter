@@ -8,10 +8,6 @@ public class PetShelter {
 
 	private Map<String, VirtualPet> petShelter = new HashMap<String, VirtualPet>();
 
-	public void PetShelter() {
-
-	}
-
 	public void addPet(VirtualPet pet) {
 		petShelter.put(pet.name, pet);
 	}
@@ -55,15 +51,17 @@ public class PetShelter {
 		System.out.print("Name\t");
 		System.out.print("|Hunger\t");
 		System.out.print("|Thirst\t");
-		System.out.println("|Boredom\t");
-		System.out.println("--------|-------|-------|-------");
+		System.out.print("|Boredom");
+		System.out.println("|Waste\t");
+		System.out.println("--------|-------|-------|-------|-------");
 		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
 			System.out.print(entry.getValue().getName() + "\t");
-			System.out.print("|"+entry.getValue().getHunger() + "\t");
-			System.out.print("|"+entry.getValue().getThirst() + "\t");
-			System.out.println("|"+entry.getValue().getBoredom() + "\t");
+			System.out.print("|" + entry.getValue().getHunger() + "\t");
+			System.out.print("|" + entry.getValue().getThirst() + "\t");
+			System.out.print("|" + entry.getValue().getBoredom() + "\t");
+			System.out.println("|" + entry.getValue().checkWaste() + "\t");
 		}
-		System.out.println("--------|-------|-------|-------");
+		System.out.println("--------|-------|-------|-------|------");
 	}
 
 	public Set<String> listNames() {
@@ -77,12 +75,24 @@ public class PetShelter {
 
 	public void cleanHabitats() {
 		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
-			entry.getValue().cleanUp();;
+			entry.getValue().cleanUp();
+			;
 		}
 	}
 
 	public void giveTreatTo(String response) {
 		petShelter.get(response).giveTreat();
+	}
+
+	public String cleanliness() {
+		String needsCleaning = "";
+		for (Entry<String, VirtualPet> entry : petShelter.entrySet()) {
+			if (entry.getValue().poopCheck() >= 1) {
+				needsCleaning.concat(entry.getKey());
+			}
+
+		}
+		return needsCleaning;
 	}
 
 }
